@@ -1,7 +1,7 @@
 stackbitVersion: ~0.2.0
 ssgName: custom
 publishDir: example/public
-buildCommand: cd example && rm -rf themes/hueman && git clone https://github.com/ppoffice/hexo-theme-hueman.git themes/hueman && mv themes/hueman/_config.yml.example themes/hueman/_config.yml && npm install && npm install -g hexo && hexo generate && cd ..
+buildCommand: cd example && rm -rf themes/hueman && git clone https://github.com/ppoffice/hexo-theme-hueman.git themes/hueman && mv themes/_config.yml themes/hueman/ && npm install && npm install -g hexo && hexo generate && cd ..
 uploadDir: images
 staticDir: example/source
 pagesDir: example/source
@@ -163,6 +163,288 @@ models:
         name: theme
         label: Theme
         const: hueman
+  themeconfig:
+    type: data
+    label: Theme Config
+    file: themes/_config.yml
+    fields: 
+      - type: object
+        name: menu
+        label: Menu
+        fields:
+          - type: string
+            name: Home
+            label: Home
+          - type: string
+            name: Categories
+            label: Categories
+          - type: string
+            name: About
+            label: About
+      - type: object
+        name: customize
+        label: Customize
+        fields:
+          - type: object
+            name: logo
+            label: Logo
+            fields:
+              - type: number
+                name: width
+                label: Logo Width
+              - type: number
+                name: height
+                label: Logo Height
+              - type: image
+                name: url
+                label: Image
+          - type: string
+            name: theme_color
+            label: Theme Color
+          - type: string
+            name: highlight
+            label: Highlight
+          - type: enum
+            name: sidebar
+            label: Sidebar
+            options:
+              - left
+              - right
+          - type: boolean
+            name: thumbnail
+            label: Thumbnail
+          - type: image
+            name: favicon
+            label: Favicon
+          - type: object
+            name: social_links
+            label: Social Links
+            fields:
+              - type: string
+                name: twitter
+                label: Twitter
+              - type: string
+                name: facebook
+                label: Facebook
+              - type: string
+                name: google-plus
+                label: Google +
+              - type: string
+                name: github
+                label: Github
+              - type: string
+                name: weibo
+                label: Weibo
+              - type: string
+                name: rss
+                label: RSS
+      - type: list
+        name: widgets
+        label: Widgets
+        items:
+          type: string
+      - type: object
+        name: search
+        label: Search
+        fields:
+          - type: boolean
+            name: insight
+            label: Insight
+          - type: string
+            name: swiftype
+            label: Swiftype Key
+            description: enter swiftype install key here
+          - type: boolean
+            name: baidu
+            label: Baidu Search
+      - type: object
+        name: comment
+        label: Comment
+        fields:
+          - type: string
+            name: disqus
+            label: Disqus
+            description: enter disqus shortname here
+          - type: string
+            name: duoshuo
+            label: Duoshuo
+            description: enter duoshuo shortname here
+          - type: string
+            name: youyan
+            label: Youyan
+            description: enter youyan uid here
+          - type: boolean
+            name: facebook
+            label: Facebook
+          - type: object
+            name: isso
+            label: Isso
+            fields:
+              - type: boolean
+                name: on
+                label: On
+              - type: string
+                name: site
+                label: Site
+              - type: string
+                name: lang
+                label: Lang
+              - type: boolean
+                name: reply-to-self
+              - type: boolean
+                name: require-author
+              - type: boolean
+                name: require-email
+              - type: string
+                name: max-comments-top
+              - type: string
+                name: max-comments-nested
+              - type: string
+                name: reveal-on-click
+              - type: boolean
+                name: avatar
+                label: Avatar
+              - type: string
+                name: avatar-bg
+                label: Avatar Background
+              - type: string
+                name: avatar-fg
+                label: Avatar Foreground Color
+              - type: boolean
+                name: vote
+                label: Vote
+              - type: string
+                name: vote-levels
+          - type: object
+            name: changyan
+            label: Changyan
+            fields:
+              - type: string
+                name: appId
+              - type: string
+                name: appKey
+              - type: boolean
+                name: on
+                label: On
+          - type: object
+            name: valine
+            label: Valine
+            fields:
+              - type: boolean
+                name: on
+                label: On
+              - type: string
+                name: appId
+              - type: string
+                name: appKey
+              - type: boolean
+                name: notify
+              - type: boolean
+                name: verify
+              - type: string
+                name: placeholder
+              - type: string
+                name: avatar
+                label: Avatar
+              - type: string
+                name: avatar_cdn
+              - type: number
+                name: pageSize
+          - type: object
+            name: gitalk
+            label: Gitalk
+            fields:
+              - type: boolean
+                name: on
+                label: On
+              - type: string
+                name: owner
+              - type: string
+                name: repo
+              - type: string
+                name: client_id
+                label: Cliente Id
+                description: OAuth application client id
+              - type: string
+                name: client_secret
+                label: Client Secret
+                description: OAuth application client secret
+              - type: string
+                name: admin
+      - type: enum
+        name: share
+        label: Share
+        default: default
+        options:
+          - jiathis
+          - bdshare
+          - addtoany
+          - default
+      - type: object
+        name: plugins
+        label: Plugins
+        fields: 
+          - type: boolean
+            name: lightgallery
+          - type: boolean
+            name: justifiedgallery
+          - type: string
+            name: google_analytics
+            label: Google Analytic Code
+          - type: string
+            name: baidu_analytics
+            label: Baidu Analytics Code
+          - type: string
+            name: bing_site_verification
+            label: Bing Verification Key
+          - type: object
+            name: statcounter
+            fields:
+              - type: string
+                name: sc_project
+                label: Project Id
+                description: enter statcounter project id
+              - type: string
+                name: sc_invisible
+                label: SC invisible
+                description: enter 1 to make statcounter invisible
+              - type: string
+                name: sc_security
+                label: Security Code
+              - type: boolean
+                name: public
+              - type: boolean
+                name: on
+          - type: boolean
+            name: mathjax
+      - type: object
+        name: miscellaneous
+        label: Miscellaneous
+        fields:
+          - type: object
+            name: open_graph
+            label: Open Graph
+            description: see http://ogp.me
+            fields:
+              - type: string
+                name: fb_app_id
+                label: Facebook App Id
+              - type: string
+                name: fb_admins
+                label: Facebook Admin
+              - type: string
+                name: twitter_id
+                label: Twitter ID
+              - type: string
+                name: google_plus
+                label: Google+ id
+          - type: object
+            name: links
+            label: Links
+            fields:
+              - type: string
+                name: Hexo
+                label: Hexo
   posts:
     type: page
     label: Posts
