@@ -74,9 +74,11 @@ models:
         name: i18n_dir
         label: i18n Dir
         const: ":lang"
-      - type: string
+      - type: list
         name: skip_render
         label: Skip Render
+        items:
+          type: string
       - type: string
         name: new_post_name
         label: New Post Name
